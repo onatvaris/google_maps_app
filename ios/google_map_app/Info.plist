@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+<string>Harita üzerinde konumunuzun görüntülenebilmesi için konum izni vermeniz gereklidir.</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Size uygun kampanyalar sunabilmemiz için konum izni vermeniz gereklidir</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Size uygun kampanyalar sunabilmemiz için konum izni vermeniz gereklidir</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

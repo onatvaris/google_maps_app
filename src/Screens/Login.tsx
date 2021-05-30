@@ -26,8 +26,9 @@ const Login: React.FC<Props> = ({ route, navigation }) => {
                 position: 'bottom',
                 visibilityTime: 1000
             });
+        } else {
+            navigation.navigate('Welcome')
         }
-        navigation.navigate('Welcome')
     }
 
     return (

@@ -27,8 +27,9 @@ const Register: React.FC<Props> = ({ navigation, route, children }) => {
                 position: 'bottom',
                 visibilityTime: 1000
             });
+        } else {
+            navigation.navigate('Welcome')
         }
-        navigation.navigate('Welcome')
     }
 
     return (
