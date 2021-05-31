@@ -1,25 +1,32 @@
 import { RouteProp, } from '@react-navigation/core'
 import { StackNavigationProp } from '@react-navigation/stack'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import Toast from 'react-native-toast-message'
 import { useDispatch, useSelector } from 'react-redux'
+import validateEmail from '../Helpers/checkEmail'
 import { MainNavigatorParamsList } from '../Navigations/types'
-import { emailChanged, passwordChanged, userNameChaned } from '../Redux'
+import { loginAction } from '../Redux'
 import { RootState } from '../Redux/Reducers'
 type Props = {
     navigation: StackNavigationProp<MainNavigatorParamsList, 'Login'>
     route: RouteProp<MainNavigatorParamsList, 'Login'>
 }
 const Login: React.FC<Props> = ({ route, navigation }) => {
-    console.log(`route`, route)
-    console.log(`navigation`, navigation)
-    const { email, password } = useSelector((state: RootState) => state.userResponse)
+
+    const [Email, setEmail] = useState('')
+    const [Password, setPassword] = useState('')
+    const a = useSelector((state: RootState) => state)
     const dispatch = useDispatch();
 
-    const registerAction = () => {
-        if (!email || !password) {
+    useEffect(() => {
+        console.log(`user`, a)
+    }, [])
+
+    const loginButtonPress = () => {
+        if (!Email || !Password || !validateEmail(Email)) {
             Toast.show({
                 type: 'error',
                 text1: 'null value',
@@ -27,12 +34,13 @@ const Login: React.FC<Props> = ({ route, navigation }) => {
                 visibilityTime: 1000
             });
         } else {
+            dispatch(loginAction({ email: Email, password: Password }))
             navigation.navigate('Welcome')
         }
     }
 
     return (
-        <View style={styles.mainContainer}>
+        <SafeAreaView style={styles.mainContainer}>
             <View style={styles.logoContainer}>
                 <Image source={require('../Assets/logo_googleMap.jpeg')} resizeMode='contain' />
             </View>
@@ -41,15 +49,15 @@ const Login: React.FC<Props> = ({ route, navigation }) => {
                 <TextInput
                     placeholder='Email'
                     style={styles.input}
-                    onChangeText={text => dispatch(emailChanged(text))}
+                    onChangeText={text => setEmail(text)}
                 />
                 <TextInput
                     placeholder='Password'
                     style={styles.input}
-                    onChangeText={text => dispatch(passwordChanged(text))}
+                    onChangeText={text => setPassword(text)}
                 />
                 <TouchableOpacity style={styles.button}
-                    onPress={() => registerAction()}>
+                    onPress={() => loginButtonPress()}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
                 <Text
@@ -57,7 +65,7 @@ const Login: React.FC<Props> = ({ route, navigation }) => {
                     style={styles.bottomText}>Register if you don't have an account</Text>
             </View>
             <Toast ref={(ref) => Toast.setRef(ref)} />
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -82,7 +90,8 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         width: wp('87%'),
         paddingLeft: 15,
-        borderRadius: 10
+        borderRadius: 10,
+        height: 40
     },
     text: {
         fontSize: 25,

@@ -1,26 +1,16 @@
-import { ActionCreator } from 'redux';
-import { EMAIL_CHANGED, PASSWORD_CHANGED, UserActionTypes, UserInterface, USERNAME_CHANGED } from '../Types';
+import { REGISTER_CHANGED, User, UserActionTypes, } from '../Types';
 
-
-export function emailChanged(email: UserInterface['email']): UserActionTypes {
+// user: User => user bir User sınıfı
+export function registerAction(user: User): UserActionTypes {
     return {
-        type: EMAIL_CHANGED,
-        payload: email
+        type: REGISTER_CHANGED,
+        payload: user
     }
 }
 
-export function passwordChanged(passoword: UserInterface['password']): UserActionTypes {
+export function loginAction(user: User): UserActionTypes {
     return {
-        type: PASSWORD_CHANGED,
-        payload: passoword
+        type: 'LOGIN_CHANGED',
+        payload: user,
     }
-
-}
-
-export function userNameChaned(userName: UserInterface['userName']): UserActionTypes {
-    return {
-        type: USERNAME_CHANGED,
-        payload: userName
-    }
-
 }

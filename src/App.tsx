@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { ReactNode, useEffect } from 'react'
 import { PermissionsAndroid, Platform, StyleSheet, Text, View } from 'react-native'
-import Router from './Navigations/Router'
+import {Router} from './Navigations/Router'
 import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './Redux/Reducers';
 import { Provider } from 'react-redux';

@@ -1,24 +1,25 @@
-export interface UserInterface {
-    userName: String,
+// user modeli
+export interface User {
     email: string
     password: string
 }
 
+
 export const EMAIL_CHANGED = "EMAIL_CHANGED"
 export const PASSWORD_CHANGED = "PASSWORD_CHANGED"
 export const USERNAME_CHANGED = "USERNAME_CHANGED"
-interface EmailChangedAction {
-    type: typeof EMAIL_CHANGED,
-    payload: UserInterface['email']
+export const REGISTER_CHANGED = "REGISTER_CHANGED"
+export const LOGIN_CHANGED = "LOGIN_CHANGED"
+// kayıt reducer action
+interface RegisterAction {
+    type: typeof REGISTER_CHANGED,
+    payload: User
 }
 
-interface PasswordChangedAction {
-    type: typeof PASSWORD_CHANGED,
-    payload: UserInterface['password']
+interface LoginAction {
+    type: typeof LOGIN_CHANGED
+    payload: User
 }
 
-interface UserNameChangedAction {
-    type: typeof USERNAME_CHANGED,
-    payload: UserInterface['userName']
-}
-export type UserActionTypes = EmailChangedAction | PasswordChangedAction | UserNameChangedAction
+
+export type UserActionTypes = RegisterAction | LoginAction

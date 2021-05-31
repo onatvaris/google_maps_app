@@ -1,32 +1,25 @@
 
-import { EMAIL_CHANGED, PASSWORD_CHANGED, UserInterface, UserActionTypes, USERNAME_CHANGED } from '../Types';
+import { UserActionTypes, REGISTER_CHANGED, User, LOGIN_CHANGED } from '../Types';
 
 
 
-const initialState: UserInterface = {
+const initialState: User = {
     email: '',
     password: '',
-    userName: ''
 };
 
-export function userReducer(state = initialState, action: UserActionTypes): UserInterface {
+export function userReducer(state = initialState, action: UserActionTypes): User {
     switch (action.type) {
-        case EMAIL_CHANGED: {
+        case REGISTER_CHANGED: {
             return {
-                ...state,
-                email: action.payload
-            };
-        }
-        case PASSWORD_CHANGED: {
-            return {
-                ...state,
-                password: action.payload
+                email: action.payload.email,
+                password: action.payload.password,
             }
         }
-        case USERNAME_CHANGED: {
+        case LOGIN_CHANGED: {
             return {
-                ...state,
-                userName: action.payload
+                email: action.payload.email,
+                password: action.payload.password,
             }
         }
         default:
