@@ -62,6 +62,9 @@ const Login: React.FC<Props> = ({ route, navigation }) => {
                 </TouchableOpacity>
                 <Text
                     onPress={() => navigation.navigate('Register')}
+                    style={styles.bottomText}>Forgot A Password</Text>
+                <Text
+                    onPress={() => navigation.navigate('Register')}
                     style={styles.bottomText}>Register if you don't have an account</Text>
             </View>
             <Toast ref={(ref) => Toast.setRef(ref)} />

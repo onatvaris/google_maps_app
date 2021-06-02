@@ -23,10 +23,11 @@ const Profile: React.FC<Props> = () => {
 
     const renderItem = ({ item }: { item: marker }) => {
         return (
-            <TouchableOpacity style={{ flexDirection: 'row', padding: 10 }}>
-                <Text style={{ marginRight: 10 }}>Note: {item.callout} </Text>
+            <TouchableOpacity style={{ flexDirection: 'row', padding: 10, borderBottomWidth: 0.5 }}>
+                <Text style={{ marginRight: 10, }}>Note: {item.callout} </Text>
                 <Image
                     source={require('../Assets/icon_location.png')}
+                    style={{ tintColor: '#fff' }}
                 />
             </TouchableOpacity>
         )
@@ -40,7 +41,7 @@ const Profile: React.FC<Props> = () => {
                 />
             </View>
             <View style={styles.contentContainer}>
-                <Text style={{ alignSelf: 'center', fontSize: 24, fontWeight: 'bold' }}>PROFIL</Text>
+                <Text style={{ alignSelf: 'center', fontSize: 24, fontWeight: 'bold' }}>PROFILE</Text>
                 <View style={styles.contentTopContainer}>
                     <Text style={{
                         fontSize: 16,
@@ -53,10 +54,10 @@ const Profile: React.FC<Props> = () => {
                         <Text style={{ color: 'white' }}>Change Password</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{ flex: 0.6 }}>
+                <View style={{ flex: 0.7 }}>
                     <Text style={{
                         alignSelf: 'center',
-                        fontSize: 19
+                        fontSize: 19,
                     }}>Marker List</Text>
                     <FlatList
                         data={marke}
@@ -76,16 +77,19 @@ export default Profile
 const styles = StyleSheet.create({
     imageContainer: { height: hp('26%'), justifyContent: 'center', },
     contentContainer: {
-        backgroundColor: '#705E59',
+        backgroundColor: '#8c5e56',
         flex: 1,
         borderTopLeftRadius: 55,
         borderTopRightRadius: 55,
         paddingTop: 15
     },
     contentTopContainer: {
-        flex: 0.4,
+        flex: 0.3,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderTopWidth: 1,
+        marginTop: 10,
+        borderTopColor: '#fff'
     },
     image: {
         alignSelf: 'center',
