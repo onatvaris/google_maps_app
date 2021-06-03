@@ -17,6 +17,7 @@ type Props = {
 const Register: React.FC<Props> = ({ navigation, route, children }) => {
     const [Password, setPassword] = useState('')
     const [Email, setEmail] = useState('')
+    const [Visibility, setVisibility] = useState(true)
     const dispatch = useDispatch();
 
 
@@ -50,11 +51,33 @@ const Register: React.FC<Props> = ({ navigation, route, children }) => {
                     style={styles.input}
                     onChangeText={text => setEmail(text)}
                 />
-                <TextInput
-                    placeholder='Password'
-                    style={styles.input}
-                    onChangeText={text => setPassword(text)}
-                />
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    borderWidth: 1,
+                    width: wp('87%'),
+                    borderRadius: 10,
+                    height: 40,
+                    marginVertical: 10,
+                }}>
+                    <TextInput
+                        placeholder='Password'
+                        style={{ width: wp('78%'), paddingLeft: 15, }}
+                        textContentType='password'
+                        secureTextEntry={Visibility}
+                        onChangeText={text => setPassword(text)}
+                    />
+                    <TouchableOpacity
+                        onPress={() => setVisibility(!Visibility)}
+                        style={{ flex: 1, marginRight: 10 }}
+                    >
+                        <Image
+                            onMagicTap={() => console.log("object")}
+                            style={{ flex: 1, resizeMode: 'contain' }}
+                            source={Visibility ? require('../Assets/visibility.png') : require('../Assets/visibility_off.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
                 <TouchableOpacity style={styles.button}
                     onPress={() => registerButtonPress()}>
                     <Text style={styles.buttonText}>Register</Text>

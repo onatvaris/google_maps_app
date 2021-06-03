@@ -1,5 +1,5 @@
 
-import { MarkeActionTypes, MarkeInterface, MARKE_CHANGED } from '../Types';
+import { DELETE_MARKE, MarkeActionTypes, MarkeInterface, MARKE_CHANGED } from '../Types';
 
 
 
@@ -12,6 +12,11 @@ export function markeReducer(state = initialState, action: MarkeActionTypes): Ma
         case MARKE_CHANGED: {
             return {
                 marke: [...state.marke, action.payload]
+            }
+        }
+        case DELETE_MARKE: {
+            return {
+                marke: action.payload
             }
         }
         default:

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
 import { Region } from 'react-native-maps'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
-import { useSelector } from 'react-redux'
-import { RootState } from '../Redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteMarkeAction, RootState } from '../Redux'
 import { Marke } from '../Redux/Types'
 
 interface Props {
@@ -14,22 +14,53 @@ interface Props {
 const Profile: React.FC<Props> = () => {
     const { email, } = useSelector((state: RootState) => state.userResponse)
     const { marke } = useSelector((state: RootState) => state.markeResponse)
-
+    const dispatch = useDispatch()
     type marker = {
         callout?: string
-        latitude?: number
-        longitude?: number
+        latitude: number
+        longitude: number
     }
+    useEffect(() => {
+        console.log("object")
+        return () => {
+            console.log("ttt")
+        }
+    }, [marke])
 
-    const renderItem = ({ item }: { item: marker }) => {
+    const renderItem = ({ item, index }: { item: marker, index: number }) => {
+        console.log(`index`, index)
         return (
-            <TouchableOpacity style={{ flexDirection: 'row', padding: 10, borderBottomWidth: 0.5 }}>
+            <View
+                style={{
+                    flexDirection: 'row',
+                    padding: 10,
+                    borderBottomWidth: 0.5,
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                }}>
                 <Text style={{ marginRight: 10, }}>Note: {item.callout} </Text>
-                <Image
-                    source={require('../Assets/icon_location.png')}
-                    style={{ tintColor: '#fff' }}
-                />
-            </TouchableOpacity>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <TouchableOpacity
+                        onPress={() => console.log(`item`, item)}
+                        style={styles.iconButton}>
+                        <Image
+                            source={require('../Assets/icon_location.png')}
+                            style={{ tintColor: '#fff' }}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => {
+                            marke.splice(index, 1)
+                            dispatch(deleteMarkeAction(marke))
+                        }}
+                        style={styles.iconButton}>
+                        <Image
+                            style={{ height: 24, width: 24, tintColor: 'black' }}
+                            source={require('../Assets/delete.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </View>
         )
     }
     return (
@@ -65,6 +96,7 @@ const Profile: React.FC<Props> = () => {
                         style={{
                             padding: 15
                         }}
+                        keyExtractor={key => key.index}
                     />
                 </View>
             </View>
@@ -77,7 +109,7 @@ export default Profile
 const styles = StyleSheet.create({
     imageContainer: { height: hp('26%'), justifyContent: 'center', },
     contentContainer: {
-        backgroundColor: '#8c5e56',
+        backgroundColor: 'rgba(140, 94, 86,0.8)',
         flex: 1,
         borderTopLeftRadius: 55,
         borderTopRightRadius: 55,
@@ -105,5 +137,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 15,
         borderRadius: 10,
+    },
+    iconButton: {
+        marginHorizontal: 5,
+        padding: 3
     }
 })

@@ -12,13 +12,18 @@ export interface MarkeInterface {
 }
 
 export const MARKE_CHANGED = "MARKE_CHANGED"
-
+export const DELETE_MARKE = "DELETE_MARKE"
 // kayıt reducer action
 interface SetMarkeAction {
     type: typeof MARKE_CHANGED,
     payload: Marke
 }
 
+interface DeleteMarkeAction {
+    type: typeof DELETE_MARKE
+    payload: MarkeInterface['marke']
+}
 
 
-export type MarkeActionTypes = SetMarkeAction
+
+export type MarkeActionTypes = SetMarkeAction | DeleteMarkeAction
