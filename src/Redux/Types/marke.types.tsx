@@ -2,9 +2,10 @@ import { LatLng } from "react-native-maps"
 
 // user modeli
 export interface Marke {
-    latitude?: number
-    longitude?: number
+    latitude: number
+    longitude: number
     callout: string
+    delta: number
 }
 
 export interface MarkeInterface {

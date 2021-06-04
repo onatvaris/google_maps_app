@@ -24,11 +24,12 @@ export const Router: React.FC = () => {
     const { Navigator, Screen } = MainStack
 
     return (
-        <Navigator initialRouteName='Register'>
+        <Navigator initialRouteName='Welcome'>
             <Screen name="Register" component={Register} options={{ headerShown: false }} />
             <Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
             <Screen name="Login" component={Login} options={{ headerShown: false }} />
             <Screen name="Profile" component={Profile} />
+            <Screen name="Markes" component={Markes} />
         </Navigator>
     )
 }

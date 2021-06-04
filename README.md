@@ -48,6 +48,7 @@ Map Screen             |  Floating Action
 :-------------------------:|:-------------------------:
 <img width="260" alt="Ekran Resmi 2021-06-02 14 57 46" src="https://user-images.githubusercontent.com/51972191/120478260-548dad00-c3b5-11eb-931b-2010de236962.png">  |  <img width="260" alt="Ekran Resmi 2021-06-02 14 58 15" src="https://user-images.githubusercontent.com/51972191/120478291-5d7e7e80-c3b5-11eb-98bf-543dbc4e0417.png">
 
-Add Marke Modal             |  Profile Page
-:-------------------------:|:-------------------------:
-<img width="260" alt="Ekran Resmi 2021-06-02 14 58 37" src="https://user-images.githubusercontent.com/51972191/120478298-5fe0d880-c3b5-11eb-95bd-4aef3e5c3a0d.png">  |  <img width="260" alt="Ekran Resmi 2021-06-03 03 36 40" src="https://user-images.githubusercontent.com/51972191/120568816-5e4afb00-c41d-11eb-8ee1-f08d0c53fc54.png">
+Add Marke Modal             |  Profile Page             |  Markes Page
+:-------------------------:|:-------------------------:|:-------------------------:
+<img width="260" alt="Ekran Resmi 2021-06-02 14 58 37" src="https://user-images.githubusercontent.com/51972191/120478298-5fe0d880-c3b5-11eb-95bd-4aef3e5c3a0d.png">  |  <img width="260" alt="Ekran Resmi 2021-06-03 03 36 40" src="https://user-images.githubusercontent.com/51972191/120568816-5e4afb00-c41d-11eb-8ee1-f08d0c53fc54.png"> | <img width="260" alt="Ekran Resmi 2021-06-04 18 37 45" src="https://user-images.githubusercontent.com/51972191/120827796-7bd6ac80-c564-11eb-977e-f61c3f097770.png">
+

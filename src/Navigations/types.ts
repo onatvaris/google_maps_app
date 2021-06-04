@@ -4,11 +4,5 @@ export type MainNavigatorParamsList = {
     Login: undefined
     Welcome: undefined
     Profile: undefined
+    Markes: { index: number }
 }
-
-export type TabNavigatorParamsList = {
-    Profile: undefined
-    Markes: undefined
-    Main: undefined
-}
-

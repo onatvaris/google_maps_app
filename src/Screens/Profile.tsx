@@ -1,17 +1,19 @@
+import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
 import { Region } from 'react-native-maps'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen'
 import { useDispatch, useSelector } from 'react-redux'
+import { MainNavigatorParamsList } from '../Navigations/types'
 import { deleteMarkeAction, RootState } from '../Redux'
 import { Marke } from '../Redux/Types'
 
 interface Props {
-
+    navigation: StackNavigationProp<MainNavigatorParamsList, 'Profile'>
 }
 
-const Profile: React.FC<Props> = () => {
+const Profile: React.FC<Props> = ({ navigation }) => {
     const { email, } = useSelector((state: RootState) => state.userResponse)
     const { marke } = useSelector((state: RootState) => state.markeResponse)
     const dispatch = useDispatch()
@@ -21,7 +23,7 @@ const Profile: React.FC<Props> = () => {
         longitude: number
     }
     useEffect(() => {
-        console.log("object")
+        console.log(marke)
         return () => {
             console.log("ttt")
         }
@@ -41,7 +43,7 @@ const Profile: React.FC<Props> = () => {
                 <Text style={{ marginRight: 10, }}>Note: {item.callout} </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <TouchableOpacity
-                        onPress={() => console.log(`item`, item)}
+                        onPress={() => navigation.navigate('Markes', { index: index })}
                         style={styles.iconButton}>
                         <Image
                             source={require('../Assets/icon_location.png')}
@@ -79,7 +81,7 @@ const Profile: React.FC<Props> = () => {
                         borderBottomWidth: 1,
                         width: wp('70%'),
                         alignSelf: 'center'
-                    }} >Email: {email}</Text>
+                    }}>Email: {email}</Text>
                     <TouchableOpacity
                         style={styles.button}>
                         <Text style={{ color: 'white' }}>Change Password</Text>
@@ -96,7 +98,7 @@ const Profile: React.FC<Props> = () => {
                         style={{
                             padding: 15
                         }}
-                        keyExtractor={key => key.index}
+                        keyExtractor={(key) => key.index}
                     />
                 </View>
             </View>

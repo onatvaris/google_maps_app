@@ -30,7 +30,7 @@ type Props = {
     navigation: StackNavigationProp<MainNavigatorParamsList, 'Welcome'>
 }
 const Welcome: React.FC<Props> = ({ navigation }) => {
-    const [coord, setCoord] = useState<LatLng>();
+    const [coord, setCoord] = useState<LatLng>({ latitude: 41.155563, longitude: 27.811736 });
     const [modalVisible, setModalVisible] = useState(false);
     const [locationSelecet, setLocationSelecet] = useState()
     const [callout, setCallout] = useState('')
@@ -43,11 +43,6 @@ const Welcome: React.FC<Props> = ({ navigation }) => {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
     });
-
-    const coordDolmabahce = {
-        latitude: 41.1557623407,
-        longitude: 27.8130511846,
-    };
 
     Geolocation.watchPosition(
         (position) => {
@@ -87,9 +82,10 @@ const Welcome: React.FC<Props> = ({ navigation }) => {
         if (locationSelecet === '1') {
             console.log(`coord`, coord)
             dispatch(setMarkeAction({
-                latitude: coord?.latitude,
-                longitude: coord?.longitude,
-                callout
+                latitude: coord.latitude,
+                longitude: coord.longitude,
+                callout,
+                delta: 0.01
             }))
             setModalVisible(false)
         }
@@ -97,9 +93,10 @@ const Welcome: React.FC<Props> = ({ navigation }) => {
             // haritada belirtilen konumu kaydet
             console.log(`regionbb`, region)
             dispatch(setMarkeAction({
-                latitude: region?.latitude,
-                longitude: region?.longitude,
-                callout
+                latitude: region.latitude,
+                longitude: region.longitude,
+                callout,
+                delta: 0.01
             }))
             console.log(`state`, markes)
             setModalVisible(false)
@@ -139,7 +136,8 @@ const Welcome: React.FC<Props> = ({ navigation }) => {
                             source={require('../Assets/icon_userLocation.png')}
                             style={{ width: 27, height: 26 }}
                             resizeMode="contain" />
-                    </Marker>}
+                    </Marker>
+                }
                 {/* haritada gösterdiğimiz konum */}
                 <Marker coordinate={region} />
             </MapView>
