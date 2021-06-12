@@ -24,7 +24,7 @@ export const Router: React.FC = () => {
     const { Navigator, Screen } = MainStack
 
     return (
-        <Navigator initialRouteName='Welcome'>
+        <Navigator initialRouteName='Register'>
             <Screen name="Register" component={Register} options={{ headerShown: false }} />
             <Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
             <Screen name="Login" component={Login} options={{ headerShown: false }} />
@@ -33,8 +33,3 @@ export const Router: React.FC = () => {
         </Navigator>
     )
 }
-
-
-
-
-

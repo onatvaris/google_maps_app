@@ -1,11 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { ReactNode, useEffect } from 'react'
 import { PermissionsAndroid, Platform, StyleSheet, Text, View } from 'react-native'
-import {Router} from './Navigations/Router'
+import { Router } from './Navigations/Router'
 import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './Redux/Reducers';
 import { Provider } from 'react-redux';
-import { store } from './Redux';
+import { store, persistor } from './Redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
 
 
 
@@ -39,11 +41,15 @@ const App: () => ReactNode = () => {
       requestCameraPermission()
     }
   }, [])
+
+
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Router />
-      </NavigationContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Router />
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   )
 }

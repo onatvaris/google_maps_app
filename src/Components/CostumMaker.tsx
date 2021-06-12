@@ -24,21 +24,7 @@ const CostumMaker: React.FunctionComponent<CostumMakerProps> = ({ item, index, s
         index * OUTER_CARD_WIDTH,
         (index + 1) * OUTER_CARD_WIDTH,
     ]);
-    // return (
-    //     <Marker
-    //         coordinate={region}>
-    //         <View
-    //             style={{
-    //                 backgroundColor: 'rgba(130,4,150, 0.9)',
-    //                 justifyContent: 'center',
-    //                 alignItems: 'center'
-    //             }}>
-    //             <View style={{ height: 50, width: 50 }}>
-    //                 <Text>asdf</Text>
-    //             </View>
-    //         </View>
-    //     </Marker>
-    // )
+    
     return (
         <Marker
             key={index}
